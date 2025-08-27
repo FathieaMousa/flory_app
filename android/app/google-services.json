@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "495577848821",
+    "project_id": "floryapp-2dd3c",
+    "storage_bucket": "floryapp-2dd3c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495577848821:android:29af0cd03122513cb25ebc",
+        "android_client_info": {
+          "package_name": "com.f.mousa.flory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJNdjyAi2VUwsANH__AikoG48HxLqEm9E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
