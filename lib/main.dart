@@ -4,13 +4,14 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import 'app.dart';
+import 'data/repositories/authentication/authentication_repository.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
-      // .then(
-      // (FirebaseApp value)=>Get.put(AuthenticationRepository())
-  // );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,)
+       .then(
+       (FirebaseApp value)=>Get.put(AuthenticationRepository())
+   );
   runApp(const App());
 }
 

@@ -1,15 +1,13 @@
-import 'package:flory/screens/loginRegister/registerScreen.dart';
+import 'package:flory/screens/LoginScreens/password_configuration/reset_password.dart';
 import 'package:flory/utils/constants/sizes.dart';
 import 'package:flory/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/text_string.dart';
 
-import '../../utils/constants/colors.dart';
-import '../../utils/constants/text_string.dart';
 
 class ForgetPassword extends StatelessWidget {
   const ForgetPassword({super.key});
@@ -19,24 +17,18 @@ class ForgetPassword extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: false,
+        ////automaticallyImplyLeading: false,
         backgroundColor: dark ? TColors.blackF :TColors.primaryBackground,
         scrolledUnderElevation: 0,
-        actions: [
-          // IconButton(onPressed: (){
-          //   Get.back();
-          // },
-          //     icon: const Icon(CupertinoIcons.clear)
-          // )
-          // ,SizedBox(width:20,),
 
-        ],
       ),
       body: Padding(padding: const EdgeInsets.all(TSizes.defaultSpace,),
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Forget password', style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                color: dark ?TColors.white : TColors.blackF ,
+                fontWeight: FontWeight.w500
             ),),
             const SizedBox(height: TSizes.spaceBtwItems,),
             Text(TTexts.forgetPasswordTittle , style: Theme.of(context).textTheme.labelMedium?.copyWith(
@@ -71,7 +63,7 @@ class ForgetPassword extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_)=>RegisterScreen()));
+                      MaterialPageRoute(builder: (_)=>ResetPassword()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: TColors.buttonPrimary,
@@ -84,7 +76,7 @@ class ForgetPassword extends StatelessWidget {
                   'Submit',
                   style: TextStyle(
                     fontSize: 18.sp,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w600 ,
                     color: TColors.primaryBackground,
                   ),
                 ),

@@ -1,4 +1,5 @@
 
+import 'package:flory/bindings/general_bindings.dart';
 import 'package:flory/screens/onBoarding/onBoarding.dart';
 import 'package:flory/utils/constants/colors.dart';
 import 'package:flory/utils/theme/theme.dart';
@@ -47,6 +48,7 @@ class App extends StatelessWidget {
                 theme: TAppTheme.LightTheme,
                 darkTheme: TAppTheme.DarkTheme,
                 themeMode:themeMode,
+               initialBinding: GeneralBindings(),
 
                // home: const OnBoarding(),
                 home:const Scaffold(backgroundColor: TColors.primary,body: Center(child:CircularProgressIndicator(color: TColors.primaryBackground,)),)

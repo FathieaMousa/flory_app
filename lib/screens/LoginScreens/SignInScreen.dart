@@ -243,23 +243,20 @@
 // }
 
 
+import 'package:flory/screens/LoginScreens/password_configuration/forget_password.dart';
 import 'package:flory/widgets/divider_social_login.dart';
-import 'package:flory/screens/loginRegister/registerScreen.dart';
 import 'package:flory/utils/constants/sizes.dart';
 import 'package:flory/widgets/login_text_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:iconsax/iconsax.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/images_string.dart';
 import '../../utils/constants/text_string.dart';
 import '../../utils/helpers/helper_functions.dart';
 import '../../utils/validators/validation.dart';
 import '../../widgets/navigation_menu.dart';
-import '../forgetPassword/forget_password.dart';
+import '../RegisterScreens/registerScreen.dart';
 
 
 class SignInScreen extends StatefulWidget {

@@ -7,8 +7,9 @@ import '../../utils/constants/images_string.dart';
 import '../../utils/constants/text_string.dart';
 import '../../utils/helpers/helper_functions.dart';
 import '../../utils/theme/custom_themes/text_theme.dart';
-import '../loginRegister/SignInScreen.dart';
-import '../loginRegister/registerScreen.dart';
+import '../LoginScreens/SignInScreen.dart';
+import '../RegisterScreens/registerScreen.dart';
+
 
 
 class Welcomescreen extends StatelessWidget {
