@@ -7,8 +7,7 @@ import '../../../utils/formatters/formatters.dart';
 class UserModel {
 // Keep those values final which you do not want to update
   final String id;
-  String firstName;
-  String lastName;
+  String fullName;
   final String username;
   final String email;
   String phoneNumber;
@@ -17,8 +16,7 @@ class UserModel {
   /// Constructor for UserModel.
   UserModel({
     required this.id,
-    required this.firstName,
-    required this.lastName,
+    required this.fullName,
     required this.username,
     required this.email,
     required this.phoneNumber,
@@ -26,15 +24,13 @@ class UserModel {
   });
 
 
-  /// Helper function to get the full name.
-  String get fullName => '$firstName $lastName';
 
   /// Helper function to format phone number.
   String get formattedPhoneNo => TFormatter.formatPhoneNumber(phoneNumber);
 
 
-  /// Static function to split full name into first and last name.
-  static List<String> namePars(fullName) => fullName.split(" ");
+  // /// Static function to split full name into first and last name.
+  // static List<String> namePars(fullName) => fullName.split(" ");
 
   /// Static function to generate a username from the full name.
   static String generateUsername(fullName) {
@@ -50,8 +46,7 @@ class UserModel {
   /// Static function to create an empty user model.
   static UserModel empty() =>
       UserModel(id: '',
-          firstName: '',
-          lastName: '',
+          fullName: '',
           username: '',
           email: '',
           phoneNumber: '',
@@ -60,8 +55,7 @@ class UserModel {
   /// Convert model to JSON structure for storing data in Firebase.
   Map<String, dynamic> toJson() {
     return {
-      'FirstName': firstName,
-      'LastName': lastName,
+      'FullName' : fullName,
       'Username': username,
       'Email': email,
       'PhoneNumber': phoneNumber,
@@ -70,21 +64,30 @@ class UserModel {
   }
 
   /// Factory method to create a UserModel from a Firebase document snapshot.
-  factory UserModelfromSnapshot (DocumentSnapshot<Map<String, dynamic>> document) {
+  factory UserModel.fromSnapshot (DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
       return UserModel(
         id: document.id,
-        firstName: data['FirstName'] ?? '',
-        lastName: data['LastName'] ?? '',
+        fullName: data['FullName'] ?? '',
         username: data['Username'] ?? '',
         email: data['Email'] ?? '',
         phoneNumber: data['PhoneNumber'] ?? '',
         profilePicture: data['ProfilePicture'] ?? '',
       );
+    }else {
+      return UserModel(
+        id: document.id,
+        fullName: '',
+        username: '',
+        email: '',
+        phoneNumber: '',
+        profilePicture: '',
+      );
     }
   }
 }
+
 
 
 

@@ -12,8 +12,7 @@ import '../../../../common/widgets/loader/network.dart';
 
 class RegisterController extends GetxController{
   static RegisterController get instance => Get.find();
-  final firstName = TextEditingController();
-  final lastName = TextEditingController();
+  final fullName = TextEditingController();
   final email = TextEditingController();
   final username = TextEditingController();
   final password = TextEditingController();
@@ -53,8 +52,7 @@ class RegisterController extends GetxController{
     // save Auth user data in the Firebase FireStore
   final newUser = UserModel(
     id:userCredential.user!.uid ,
-    firstName: firstName.text.trim(),
-    lastName: lastName.text.trim(),
+    fullName: fullName.text.trim(),
     username:username.text.trim(),
     email: email.text.trim(),
     phoneNumber: phoneNumber.text.trim(),
