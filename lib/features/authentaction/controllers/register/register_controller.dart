@@ -65,9 +65,12 @@ class RegisterController extends GetxController{
 
 // Show Success.Message
      TLoaders.successSnackBar (title: 'Congratulations', message: 'Your account has been created! Verify email to continue.');
-      // move to Verify Email Screen
-      Get.to(()=>const VerifyEmail());
+
+
+     // move to Verify Email Screen
+      Get.to(()=> VerifyEmail(email:email.text.trim(),));
     }catch(e) {
+
       //Remove Loader
       TFullScreenLoader.stopLoading();
       //Show some Generic Error to the user

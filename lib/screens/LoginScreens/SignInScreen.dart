@@ -243,6 +243,7 @@
 // }
 
 
+import 'package:flory/features/authentaction/controllers/login/signin_controller.dart';
 import 'package:flory/screens/LoginScreens/password_configuration/forget_password.dart';
 import 'package:flory/widgets/divider_social_login.dart';
 import 'package:flory/utils/constants/sizes.dart';
@@ -250,6 +251,9 @@ import 'package:flory/widgets/login_text_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/images_string.dart';
 import '../../utils/constants/text_string.dart';
@@ -265,19 +269,15 @@ class SignInScreen extends StatefulWidget {
   State<SignInScreen> createState() => _SignInScreenState();
 }
 class _SignInScreenState extends State<SignInScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
-  bool _isPasswordHidden = true;
+final controller = Get.put(SigninController());
 
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _usernameController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _emailController.dispose();
+  //   _usernameController.dispose();
+  //   _passwordController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -324,44 +324,41 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(height: TSizes.spaceBtwSections.h),
                   //Form
                   Form(
-                    key: _formKey,
+                    key: controller.signinFormKey,
                     child: Column(
                       children: [
                         SizedBox(
                           height: 70.h,
                           width: 349.w,
                           child: LoginTextFields(
-                            controller: _emailController,
+                            validator: (value)=>TValidator.validateEmptyText('email',value),
+                            controller: controller.email,
                             hintText: 'Email',
                             icon: CupertinoIcons.mail,
-                            validator: TValidator.validateEmail,
+                            keyboardType: TextInputType.emailAddress,
                           ),
                         ),
                         SizedBox(height: TSizes.spaceBtwInputFields.h),
-                        SizedBox(
-                          height: 70.h,
-                          width: 349.w,
-                          child: LoginTextFields(
-                            controller: _passwordController,
-                            hintText: 'Password',
-                            icon: CupertinoIcons.lock,
-                            validator: TValidator.validatePassword,
-                            obscureText: _isPasswordHidden,
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _isPasswordHidden
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                                color: const Color(0xFF666666),
+                        // SizedBox(
+                        //   height: 70.h,
+                        //   width: 349.w,
+                        // ),
+                         // Password Field
+                          Obx(
+                                ()=> LoginTextFields(
+                              validator: (value)=>TValidator.validateEmptyText('password',value),
+                              controller: controller.password,
+                              hintText: 'Password',
+                              icon: CupertinoIcons.lock,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: controller.hidePassword.value,
+                              suffixIcon: IconButton(
+                                icon: Icon( controller.hidePassword.value ?Iconsax.eye_slash : Iconsax.eye),
+                                onPressed: ()=> controller.hidePassword.value= !controller.hidePassword.value,
                               ),
-                              onPressed: () {
-                                setState(() {
-                                  _isPasswordHidden = !_isPasswordHidden;
-                                });
-                              },
                             ),
                           ),
-                        ),
+
                         SizedBox(height: TSizes.spaceBtwSections.h),
                         //confirm msg
                         Row(
@@ -445,7 +442,6 @@ class _SignInScreenState extends State<SignInScreen> {
                               //  'Please check the form';
                               //  }
                             },
-
                             style: ElevatedButton.styleFrom(
                               backgroundColor: TColors.buttonPrimary,
                               shape: RoundedRectangleBorder(

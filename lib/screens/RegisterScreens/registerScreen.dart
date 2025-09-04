@@ -76,37 +76,47 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     key: controller.registerFormKey,
                     child: Column(
                       children: [
+                        // FullName Field
+                        LoginTextFields(
+                          validator: (value)=> TValidator.validateEmptyText('full name',value),
+                          controller: controller.fullName,
+                          hintText: 'Full Name',
+                          icon: Iconsax.personalcard,
+                          keyboardType: TextInputType.text,
+                        ),
+                        SizedBox(height: TSizes.spaceBtwInputFields.h),
                         // Email Field
                         LoginTextFields(
-                          validator: (value)=>TValidator.validateEmail(value),
+                          validator: (value)=>TValidator.validateEmptyText('email',value),
                           controller: controller.email,
                           hintText: 'Email',
                           icon: CupertinoIcons.mail,
                           keyboardType: TextInputType.emailAddress,
                         ),
                         SizedBox(height: TSizes.spaceBtwInputFields.h),
-                        // Phone Field
-                        LoginTextFields(
-                          validator:(value)=> TValidator.validatePhoneNumber(value),
-                          controller: controller.phoneNumber,
-                          hintText: 'Phone number',
-                          icon: CupertinoIcons.phone,
-                          keyboardType: TextInputType.phone,
-                        ),
-                        SizedBox(height: TSizes.spaceBtwInputFields.h),
                         // Username Field
                         LoginTextFields(
-                          validator: (value)=> TValidator.validateUsername(value),
+                          validator: (value)=> TValidator.validateEmptyText('username',value),
                           controller: controller.username,
                           hintText: 'Username',
                           icon: CupertinoIcons.person,
                           keyboardType: TextInputType.text,
                         ),
                         SizedBox(height: TSizes.spaceBtwInputFields.h),
+                        // Phone Field
+                        LoginTextFields(
+                          validator:(value)=> TValidator.validateEmptyText('phone number',value),
+                          controller: controller.phoneNumber,
+                          hintText: 'Phone number',
+                          icon: CupertinoIcons.phone,
+                          keyboardType: TextInputType.phone,
+                        ),
+                        SizedBox(height: TSizes.spaceBtwInputFields.h),
+
                         // Password Field
                         Obx(
                               ()=> LoginTextFields(
-                            validator: (value)=>TValidator.validatePassword(value),
+                            validator: (value)=>TValidator.validateEmptyText('password',value),
                             controller: controller.password,
                             hintText: 'Password',
                             icon: CupertinoIcons.lock,

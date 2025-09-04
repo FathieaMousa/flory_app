@@ -1,3 +1,5 @@
+import 'package:flory/data/repositories/authentication/authentication_repository.dart';
+import 'package:flory/features/authentaction/controllers/register/verify_email_controller.dart';
 import 'package:flory/screens/RegisterScreens/success_screen.dart';
 import 'package:flory/utils/constants/colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,10 +14,12 @@ import '../../utils/constants/text_string.dart';
 import '../loginScreens/SignInScreen.dart';
 
 class VerifyEmail extends StatelessWidget {
-  const VerifyEmail({super.key});
+  const VerifyEmail({super.key , this.email});
+  final String? email ;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(VerifyEmailController());
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       // AppBar
@@ -24,13 +28,12 @@ class VerifyEmail extends StatelessWidget {
         backgroundColor: dark?TColors.blackF : TColors.primaryBackground,
         automaticallyImplyLeading: false,
         actions: [
-          IconButton(onPressed: ()=> Get.offAll(SignInScreen()), icon:Icon(CupertinoIcons.clear))
+          IconButton(onPressed: ()=> AuthenticationRepository.instance.logout(), icon:Icon(CupertinoIcons.clear))
           , SizedBox(width: TSizes.defaultSpace,)
         ],
       ),
 
       body:  SingleChildScrollView(
-
         child: Padding(
           padding: EdgeInsets.all(TSizes.defaultSpace*1.5),
           child: Column(
@@ -46,7 +49,7 @@ class VerifyEmail extends StatelessWidget {
               ),textAlign: TextAlign.center,),
               const SizedBox(height: TSizes.spaceBtwItems,),
               // User email
-              Text('support@floryteam.com', style: Theme.of(context).textTheme.labelLarge?.copyWith(
+              Text(email ?? '', style: Theme.of(context).textTheme.labelLarge?.copyWith(
                   fontSize: 14,
                   fontWeight: FontWeight.w400
               ),textAlign: TextAlign.center),
@@ -67,14 +70,7 @@ class VerifyEmail extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12.r),
                       )
                   ),
-                  onPressed: ()=> Get.to( ()=>
-                      SuccessScreen(
-                        image: TImages.verifyDone,
-                        tittle: TTexts.createdSuccessfully,
-                        subTittle: TTexts.createdSuccessfullySubTittle,
-                        onPressed: () =>Get.to(()=>SignInScreen()),
-                      ),
-                  ),
+                  onPressed: ()=>controller.checkEmailVerificationStatus(),
                   child: const Text('Continue'),
                 ),
               ),
@@ -87,8 +83,7 @@ class VerifyEmail extends StatelessWidget {
                     foregroundColor: MaterialStateProperty.all(TColors.primary ),
 
                   ),
-                  onPressed: () {
-                  },
+                  onPressed: ()=> controller.sendEmailVerification(),
                   child: const Text('Resend Email' , style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600

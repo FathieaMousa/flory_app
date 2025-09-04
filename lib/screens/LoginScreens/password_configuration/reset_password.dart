@@ -1,4 +1,5 @@
 
+import 'package:flory/features/authentaction/controllers/forget_password/forget_password_controller.dart';
 import 'package:flory/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ import '../../../utils/constants/text_string.dart';
 import '../SignInScreen.dart';
 
 class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
+  const ResetPassword({super.key , required this.email});
+  final String email ;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class ResetPassword extends StatelessWidget {
       body: SingleChildScrollView(
         padding: EdgeInsets.all(TSizes.defaultSpace * 1.5),
         child: Column(
+          //Image
           children: [
             SizedBox(height: TSizes.defaultSpace),
             Center(
@@ -39,6 +42,7 @@ class ResetPassword extends StatelessWidget {
               ),
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
+            //Email ,Title , SubTitle
             Text(
               TTexts.passwordResetTittle,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -57,6 +61,8 @@ class ResetPassword extends StatelessWidget {
             SizedBox(
               width: double.infinity.w,
               height: 55.h,
+
+              //Button
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.zero,
@@ -66,8 +72,7 @@ class ResetPassword extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                 ),
-                onPressed: () {}
-                ,
+                onPressed: ()=>Get.offAll(()=>const SignInScreen()) ,
                 child: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600),),
               ),
             ),
@@ -75,13 +80,13 @@ class ResetPassword extends StatelessWidget {
 
             SizedBox(
               width: double.infinity,
+              //Resent Button
               child: TextButton(
                 style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.all(TColors.primary ),
                   overlayColor: MaterialStateProperty.all(TColors.primary40 ),
                 ),
-                onPressed: () {
-                },
+                onPressed: ()=>ForgetPasswordController.instance.resendResetPasswordEmail(email) , 
                 child: const Text('Resend Email' , style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600
