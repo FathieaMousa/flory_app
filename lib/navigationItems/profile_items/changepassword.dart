@@ -4,12 +4,13 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
-
-import '../../utils/constants/colors.dart' show TColors;
+import '../../../utils/constants/colors.dart';
+import '../../../utils/helpers/helper_functions.dart';
+import '../../../utils/theme/custom_themes/appBar_theme.dart';
+import '../../../utils/theme/custom_themes/text_theme.dart';
+import '../../features/authentaction/controllers/login/user_controller.dart';
 import '../../utils/constants/images_string.dart';
-import '../../utils/helpers/helper_functions.dart';
-import '../../utils/theme/custom_themes/appBar_theme.dart';
-import '../../utils/theme/custom_themes/text_theme.dart';
+
 
 class Changepassword extends StatefulWidget {
   const Changepassword({super.key});
@@ -19,6 +20,8 @@ class Changepassword extends StatefulWidget {
 }
 
 class _ChangepasswordState extends State<Changepassword> {
+  final controller = UserController.instance ;
+
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -60,8 +63,8 @@ class _ChangepasswordState extends State<Changepassword> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("Baraa Alaydi",style: TextStyle(fontSize: 20.sp,color: Colors.black),),
-                      Text("baraaalayde30@gmail.com",style: TextStyle(fontSize: 15.sp,
+                      Text(controller.user.value.fullName,style: TextStyle(fontSize: 20.sp,color: Colors.black),),
+                      Text(controller.user.value.email,style: TextStyle(fontSize: 15.sp,
                         color: dark ? TColors.light : TColors.black,
                       ),),
                       SizedBox(height: 14.h),
@@ -144,7 +147,7 @@ class _ChangepasswordState extends State<Changepassword> {
                       ),
                       backgroundColor: TColors.primary,
                       foregroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(horizontal: 140.w,vertical: 10.h),
+                      padding: EdgeInsets.symmetric(horizontal: 140.w,vertical:5.h),
 
                     ),
                     onLongPress: (){},

@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../utils/formatters/formatters.dart';
 
@@ -8,19 +9,21 @@ class UserModel {
 // Keep those values final which you do not want to update
   final String id;
   String fullName;
-  final String username;
   final String email;
   String phoneNumber;
   String profilePicture;
+  String gender ;
 
   /// Constructor for UserModel.
   UserModel({
     required this.id,
     required this.fullName,
-    required this.username,
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
+    required this.gender,
+
+
   });
 
 
@@ -47,19 +50,19 @@ class UserModel {
   static UserModel empty() =>
       UserModel(id: '',
           fullName: '',
-          username: '',
           email: '',
           phoneNumber: '',
-          profilePicture: '');
+          profilePicture: '',
+      gender: '');
 
   /// Convert model to JSON structure for storing data in Firebase.
   Map<String, dynamic> toJson() {
     return {
       'FullName' : fullName,
-      'Username': username,
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
+      'Gender':gender
     };
   }
 
@@ -70,20 +73,13 @@ class UserModel {
       return UserModel(
         id: document.id,
         fullName: data['FullName'] ?? '',
-        username: data['Username'] ?? '',
+        gender: data['Gender'] ?? '',
         email: data['Email'] ?? '',
         phoneNumber: data['PhoneNumber'] ?? '',
         profilePicture: data['ProfilePicture'] ?? '',
       );
     }else {
-      return UserModel(
-        id: document.id,
-        fullName: '',
-        username: '',
-        email: '',
-        phoneNumber: '',
-        profilePicture: '',
-      );
+      return UserModel.empty();
     }
   }
 }

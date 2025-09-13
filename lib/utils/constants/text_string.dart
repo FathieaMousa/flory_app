@@ -27,8 +27,9 @@ class TTexts {
   //SignIn Screen
   static const String title2 = "Welcome Back";
   static const String subTitle2 = "You’ve Been Missed!";
-  static const String confirm_msg2 = "Don’t Have?";
+  static const String confirm_msg2 = "Don’t Have An Account?";
   static const String forgetyourpassword = "forget password?";
+  static const String remeberme = 'Remember Me';
 
 
   //

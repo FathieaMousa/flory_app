@@ -120,7 +120,12 @@ class TValidator {
 
     return 'Please enter a valid phone number';
   }
-
-
+   // validate gender
+  static String? validateGender(String? value) {
+  if (value == null || value.isEmpty) {
+  return "Please select gender";
+  }
+  return null;
+}
 
 }

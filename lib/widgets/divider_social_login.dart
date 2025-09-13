@@ -2,10 +2,14 @@ import 'package:flory/utils/constants/colors.dart';
 import 'package:flory/utils/constants/sizes.dart';
 import 'package:flory/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class DividerSocialLogin extends StatelessWidget {
-  const DividerSocialLogin({super.key , required this.divierText});
-  final String divierText ;
+  const DividerSocialLogin({super.key , required this.dividerText, this.controller, required this.onGooglePressed});
+  final String dividerText ;
+  final dynamic controller;
+  final VoidCallback onGooglePressed;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -15,7 +19,7 @@ class DividerSocialLogin extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Flexible(child: Divider(color: dark? TColors.darkGrey :TColors.grey,thickness: 0.5,indent: 60,endIndent: 5,)),
-            Text(divierText , style: Theme.of(context).textTheme.labelMedium,),
+            Text(dividerText , style: Theme.of(context).textTheme.labelMedium,),
             Flexible(child: Divider(color: dark? TColors.darkGrey :TColors.grey,thickness: 0.5,indent: 5,endIndent: 60,))
 
           ],
@@ -29,7 +33,7 @@ class DividerSocialLogin extends StatelessWidget {
                 border: Border.all(color: TColors.grey), borderRadius: BorderRadius.circular(100),
               ),
               child: IconButton(
-                  onPressed: (){},
+                  onPressed: onGooglePressed,
                   icon: const Image(
                     width: TSizes.iconMd,
                     height:TSizes.iconMd,

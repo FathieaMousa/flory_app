@@ -86,7 +86,7 @@ class ResetPassword extends StatelessWidget {
                   foregroundColor: MaterialStateProperty.all(TColors.primary ),
                   overlayColor: MaterialStateProperty.all(TColors.primary40 ),
                 ),
-                onPressed: ()=>ForgetPasswordController.instance.resendResetPasswordEmail(email) , 
+                onPressed: ()=>ForgetPasswordController.instance.resendResetPasswordEmail(email) ,
                 child: const Text('Resend Email' , style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600

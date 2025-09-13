@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../utils/constants/colors.dart';
-import '../../utils/helpers/helper_functions.dart';
-import '../../utils/theme/custom_themes/appBar_theme.dart';
-import '../../utils/theme/custom_themes/text_theme.dart';
+import '../../../utils/constants/colors.dart';
+import '../../../utils/helpers/helper_functions.dart';
+import '../../../utils/theme/custom_themes/appBar_theme.dart';
+import '../../../utils/theme/custom_themes/text_theme.dart';
 import 'newdeliveryaddress.dart';
 
 class Shippingaddress extends StatefulWidget {
@@ -103,7 +103,7 @@ class _ShippingaddressState extends State<Shippingaddress> {
                     ),
                     backgroundColor: Colors.white,
                     foregroundColor: TColors.primary,
-                    padding: EdgeInsets.symmetric(horizontal: 120.w,vertical: 10.h),
+                    padding: EdgeInsets.symmetric(horizontal: 120.w,vertical:5.h),
 
                   ),
                   onLongPress: (){},

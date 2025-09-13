@@ -1,3 +1,108 @@
+//plugins {
+//    id("com.android.application")
+//    // START: FlutterFire Configuration
+//    id("com.google.gms.google-services")
+//    // END: FlutterFire Configuration
+//    id("kotlin-android")
+//    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+//    id("dev.flutter.flutter-gradle-plugin")
+//}
+//
+//android {
+//    namespace = "com.f.mousa.flory"
+//    compileSdk = 35
+//    //ndkVersion = flutter.ndkVersion
+//    ndkVersion = "27.0.12077973"
+//
+//    compileOptions {
+//        sourceCompatibility = JavaVersion.VERSION_17
+//        targetCompatibility = JavaVersion.VERSION_17
+//    }
+//
+//    kotlinOptions {
+//        jvmTarget = "17"
+//    }
+//
+//    defaultConfig {
+//        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+//        applicationId = "com.f.mousa.flory"
+//        // You can update the following values to match your application needs.
+//        // For more information, see: https://flutter.dev/to/review-gradle-config.
+//       // minSdk = flutter.minSdkVersion
+//        minSdk = 23
+//        targetSdk = 35
+//        versionCode = 1
+//        versionName = "1.0"
+//    }
+//
+//    buildTypes {
+//        release {
+//            // TODO: Add your own signing config for the release build.
+//            // Signing with the debug keys for now, so `flutter run --release` works.
+//            signingConfig = signingConfigs.getByName("debug")
+//        }
+//    }
+//}
+//
+//flutter {
+//    source = "../.."
+//}
+//dependencies {
+//    // Firebase BOM لتوحيد النسخ
+//    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
+//    implementation("com.google.firebase:firebase-auth-ktx")
+//    implementation("com.google.firebase:firebase-firestore-ktx")
+//    implementation("com.google.firebase:firebase-storage-ktx")
+//    implementation("com.google.android.gms:play-services-auth:22.2.0")
+//}
+//plugins {
+//    id("com.android.application")
+//    id("kotlin-android")
+//    id("com.google.gms.google-services")
+//    id("dev.flutter.flutter-gradle-plugin")
+//}
+//
+//android {
+//    namespace = "com.f.mousa.flory"
+//    compileSdk = 35
+//    ndkVersion = "27.0.12077973"
+//
+//    compileOptions {
+//        sourceCompatibility = JavaVersion.VERSION_17
+//        targetCompatibility = JavaVersion.VERSION_17
+//    }
+//
+//    kotlinOptions {
+//        jvmTarget = "17"
+//    }
+//
+//    defaultConfig {
+//        applicationId = "com.f.mousa.flory"
+//        minSdk = 23
+//        targetSdk = 35
+//        versionCode = 1
+//        versionName = "1.0"
+//    }
+//
+//    buildTypes {
+//        release {
+//            signingConfig = signingConfigs.getByName("debug")
+//        }
+//    }
+//}
+//
+//flutter {
+//    source = "../.."
+//}
+//
+//dependencies {
+//    // Firebase BOM لتوحيد النسخ
+//    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
+//    implementation("com.google.firebase:firebase-auth-ktx")
+//    implementation("com.google.firebase:firebase-firestore-ktx")
+//    implementation("com.google.firebase:firebase-storage-ktx")
+//    implementation("com.google.android.gms:play-services-auth:22.2.0")
+
 plugins {
     id("com.android.application")
     // START: FlutterFire Configuration
@@ -10,33 +115,28 @@ plugins {
 
 android {
     namespace = "com.f.mousa.flory"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 35
+    ndkVersion = "27.0.12077973"// أحدث نسخة مستقرة
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = "17"
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.f.mousa.flory"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        minSdk = 23
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
     }
@@ -45,3 +145,14 @@ android {
 flutter {
     source = "../.."
 }
+//
+//dependencies {
+//    // استخدام أحدث نسخة من Firebase BOM
+//    implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
+//    implementation("com.google.firebase:firebase-auth-ktx")
+//    implementation("com.google.firebase:firebase-firestore-ktx")
+//    implementation("com.google.firebase:firebase-storage-ktx")
+//
+//    // استخدام نسخة حديثة من play-services-auth
+//    implementation("com.google.android.gms:play-services-auth:21.2.0")
+//}
