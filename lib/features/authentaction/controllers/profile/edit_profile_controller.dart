@@ -32,7 +32,7 @@ class EditProfileController extends GetxController{
   //Fetch user record
   Future<void> initializeData ()async{
     fullNameController.text = userController.user.value.fullName ;
-    emailController.text = userController.user.value.email ;
+   emailController.text = userController.user.value.email ;
     phoneNumController.text= userController.user.value.phoneNumber ;
     selectedGender.value = userController.user.value.gender ;
   }
@@ -58,7 +58,8 @@ class EditProfileController extends GetxController{
       }
 
       //update user's data in the Firebase Firestore
-      Map<String , dynamic>userData = {'FullName':fullNameController.text.trim() ,'Email' :emailController.text.trim() ,
+      Map<String , dynamic>userData = {'FullName':fullNameController.text.trim() ,
+        //'Email' :emailController.text.trim() ,
       'PhoneNumber':phoneNumController.text.trim() , 'Gender':selectedGender.value};
       await userRepository.updateSingleField(userData);
 

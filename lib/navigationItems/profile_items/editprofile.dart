@@ -93,7 +93,7 @@ class _EditprofileState extends State<Editprofile> {
               Text("Name",style: TextStyle(fontSize: 16.sp,fontFamily: "Inter",color:dark? TColors.white:Colors.black),),
               SizedBox(height: 5.h,),
               Form(
-
+               key:controller.EditFormKey ,
                 child: TextFormField(
                   style: TextStyle(fontSize: 20.sp),
                   decoration: InputDecoration(
@@ -113,21 +113,21 @@ class _EditprofileState extends State<Editprofile> {
               SizedBox(height:  TSizes.spaceBtwInputFields.h),
               Text("Email",style: TextStyle(fontSize: 16.sp,fontFamily: "Inter",color:dark? TColors.white:Colors.black),),
               SizedBox(height: 5.h,),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                style: TextStyle(fontSize: 20.sp),
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(7.r),
-                      borderSide: BorderSide.none,
-                    ),
-                    contentPadding: EdgeInsets.only(left: 15.w),
-                    hintText: controller.emailController.text,
-                    hintStyle: TextStyle(fontFamily: "Inter",fontSize: 15.sp,color: TColors.primary40),
-                    filled: true,
-                    fillColor: dark ? TColors.white.withOpacity(0.2): Colors.white
-
-                ),),
+              // TextFormField(
+              //   keyboardType: TextInputType.emailAddress,
+              //   style: TextStyle(fontSize: 20.sp),
+              //   decoration: InputDecoration(
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(7.r),
+              //         borderSide: BorderSide.none,
+              //       ),
+              //       contentPadding: EdgeInsets.only(left: 15.w),
+              //       hintText: controller.emailController.text,
+              //       hintStyle: TextStyle(fontFamily: "Inter",fontSize: 15.sp,color: TColors.primary40),
+              //       filled: true,
+              //       fillColor: dark ? TColors.white.withOpacity(0.2): Colors.white
+              //
+              //   ),),
               SizedBox(height:  TSizes.spaceBtwInputFields.h),
               Text("Phone Number",style: TextStyle(fontSize: 16.sp,fontFamily: "Inter",color:dark? TColors.white:Colors.black),),
               SizedBox(height: 5.h,),
@@ -189,8 +189,10 @@ class _EditprofileState extends State<Editprofile> {
                       padding: EdgeInsets.symmetric(horizontal: 140.w,vertical:5.h),
 
                     ),
-                    onLongPress: (){},
-                    onPressed: (){},
+
+                    onPressed: (){
+                      controller.editUserData();
+                    },
                     child: Text("Save",style: TextStyle(fontSize: 18.sp,fontFamily: "Inter"),)),
               ),
             ],
