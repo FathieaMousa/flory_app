@@ -195,6 +195,22 @@ class _EditprofileState extends State<Editprofile> {
                     },
                     child: Text("Save",style: TextStyle(fontSize: 18.sp,fontFamily: "Inter"),)),
               ),
+              SizedBox(height: TSizes.spaceBtwSections.h),
+              Center(
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25.r)
+                      ),
+                      backgroundColor: TColors.primary,
+                      foregroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(horizontal: 140.w,vertical:5.h),
+
+                    ),
+
+                    onPressed: ()=>UserController.instance.deleteAccountWarningPopup(),
+                    child: Text("Close Account",style: TextStyle(fontSize: 18.sp,fontFamily: "Inter"),)),
+              ),
             ],
           ),
         ),
